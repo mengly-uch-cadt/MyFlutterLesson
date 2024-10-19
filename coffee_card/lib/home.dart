@@ -14,7 +14,22 @@ class Home extends StatelessWidget {
         backgroundColor: Colors.brown[700],
         centerTitle: true,
       ),
-      body: const Text("Home Content!!"),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.end, // x 
+        mainAxisAlignment: MainAxisAlignment.end, // y
+        children: [
+          Container(
+            color: Colors.brown[500], 
+            padding: const EdgeInsets.all(50),
+            child: const Text("Thida so cute....."),
+          ),
+          Container(
+            color: Colors.brown[300], 
+            padding: const EdgeInsets.all(50),
+            child: const Text("Thida so cute men ten haa....."),
+          )
+        ],
+      )
     );
   }
 }
