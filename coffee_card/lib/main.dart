@@ -19,22 +19,25 @@ class Sandbox extends StatelessWidget{
         title: const Text("Sandbox"),
         backgroundColor: Colors.grey,
       ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.end, // cros same as x-axis
-        mainAxisAlignment: MainAxisAlignment.center, // main same as y-axis
+      body: Row(
         children: [
           Container(
-            color: Colors.brown[200],
-            padding: const EdgeInsets.all(20),
-            child: const Text("Hello Mother fucker...."),
+            height: 100,
+            color: Colors.red,
+            child: const Text("one"),
           ),
           Container(
-            color: Colors.brown[100],
-            padding: const EdgeInsets.all(20),
-            child: const Text("Hello Mother fucker 2...."),
+            height: 200,
+            color: Colors.green,
+            child: const Text("two"),
+          ),
+          Container(
+            height: 300,
+            color: Colors.blue,
+            child: const Text("three"),
           )
         ],
-      ),
+      )
     );
   }
 }
