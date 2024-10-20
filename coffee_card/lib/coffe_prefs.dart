@@ -56,7 +56,7 @@ class _CoffePrefsState extends State<CoffePrefs> {
             Text("$sugars"),
             // const SizedBox(width: 50), // set space between 
             Image.asset('assets/img/sugar-cube2.png',
-              width: 25,
+              width: 20,
               colorBlendMode: BlendMode.dst,
               color: Colors.brown[100],
             ),
