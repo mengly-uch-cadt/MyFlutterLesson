@@ -16,18 +16,24 @@ class Home extends StatelessWidget {
         centerTitle: true,
       ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.end, // x 
-        mainAxisAlignment: MainAxisAlignment.end, // y
+        crossAxisAlignment: CrossAxisAlignment.stretch, // x 
+        mainAxisAlignment: MainAxisAlignment.start, // y
         children: [
           Container(
             color: Colors.brown[500], 
-            padding: const EdgeInsets.all(50),
-            child: const Text("Thida so cute....."),
+            padding: const EdgeInsets.all(10),
+            child: const Text("How I like my coffee...."),
           ),
           Container(
             color: Colors.brown[300], 
-            padding: const EdgeInsets.all(50),
+            padding: const EdgeInsets.all(10),
             child: const CoffePrefs()
+          ),
+          Expanded(
+            child: Image.asset("assets/img/coffee-bg.jpg",
+              fit: BoxFit.fitWidth,
+              alignment: Alignment.bottomCenter,
+            )
           )
         ],
       )
