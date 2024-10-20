@@ -31,13 +31,16 @@ class _CoffePrefsState extends State<CoffePrefs> {
         Row(
           children: [
             const Text("Stregth: "),
-            Text("$stregnth"),
+            // Text("$stregnth"),
             // const SizedBox(width: 50),
-            Image.asset('assets/img/coffee-bean2.png',
-              width: 15,
-              colorBlendMode: BlendMode.dst,
-              color: Colors.brown[100],
-            ),
+            for (int i=0; i<stregnth; i++)
+            // {
+              Image.asset('assets/img/coffee-bean2.png',
+                width: 15,
+                colorBlendMode: BlendMode.dst,
+                color: Colors.brown[100],
+              ),
+            // }
             const Expanded(child: SizedBox()),
             // const Text("+"),
             FilledButton(
@@ -53,13 +56,15 @@ class _CoffePrefsState extends State<CoffePrefs> {
         Row(
           children: [
             const Text("Sugars: "),
-            Text("$sugars"),
             // const SizedBox(width: 50), // set space between 
-            Image.asset('assets/img/sugar-cube2.png',
-              width: 20,
-              colorBlendMode: BlendMode.dst,
-              color: Colors.brown[100],
-            ),
+            if(sugars == 0 )
+              const Text("No sugars..."),
+            for (int i=0; i<sugars; i++)
+              Image.asset('assets/img/sugar-cube2.png',
+                width: 20,
+                colorBlendMode: BlendMode.dst,
+                color: Colors.brown[100],
+              ),
             const Expanded(child: SizedBox()),
             // const Text("+"),
             FilledButton(
