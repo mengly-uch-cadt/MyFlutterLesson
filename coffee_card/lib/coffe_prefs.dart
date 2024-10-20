@@ -1,3 +1,5 @@
+import 'package:coffee_card/styled_body_text.dart';
+import 'package:coffee_card/styled_button.dart';
 import 'package:flutter/material.dart';
 
 class CoffePrefs extends StatefulWidget {
@@ -30,7 +32,7 @@ class _CoffePrefsState extends State<CoffePrefs> {
       children: [
         Row(
           children: [
-            const Text("Stregth: "),
+            const StyledBodyText("Stregth: "),
             // Text("$stregnth"),
             // const SizedBox(width: 50),
             for (int i=0; i<stregnth; i++)
@@ -43,22 +45,19 @@ class _CoffePrefsState extends State<CoffePrefs> {
             // }
             const Expanded(child: SizedBox()),
             // const Text("+"),
-            FilledButton(
-              style: FilledButton.styleFrom(
-                backgroundColor: Colors.brown,
-                foregroundColor: Colors.white
-              ),
+            StyledButton(
               onPressed: increaseStrength, 
-              child: const Text("+")
+              child: const Text("+") // widget Text
             )
           ],
         ),
         Row(
           children: [
-            const Text("Sugars: "),
+            // Call component StyleBodyText
+            const StyledBodyText("Sugars: "),
             // const SizedBox(width: 50), // set space between 
             if(sugars == 0 )
-              const Text("No sugars..."),
+              const StyledBodyText("No sugars..."),
             for (int i=0; i<sugars; i++)
               Image.asset('assets/img/sugar-cube2.png',
                 width: 20,
@@ -67,13 +66,10 @@ class _CoffePrefsState extends State<CoffePrefs> {
               ),
             const Expanded(child: SizedBox()),
             // const Text("+"),
-            FilledButton(
-              style: FilledButton.styleFrom(
-                backgroundColor: Colors.brown,
-                foregroundColor: Colors.white
-              ),
+            // Call component Button
+            StyledButton(
               onPressed: increaseSugars,
-              child: const Text("+")
+              child: const Text("+") // widget Text
             )
 
           ],
