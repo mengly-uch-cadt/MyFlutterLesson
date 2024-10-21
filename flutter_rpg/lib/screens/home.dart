@@ -10,6 +10,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  List characters = ['mario', 'luigi', 'peach', 'toad', 'bowser', 'koopa', 'toad', 'bowser', 'koopa'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,9 +23,23 @@ class _HomeState extends State<Home> {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            const StyledTitle('title'),
-            const StyledHeading('heading'),
-            const StyledText('text'),
+            // use expanded for scrollable and make the gap look good 
+            Expanded(
+              child: ListView.builder(
+                itemCount: characters.length,
+                itemBuilder: (_, index){  // a function for builder need 2 parameter but use _ for unused parameter
+                  return Container(
+                    color: Colors.grey[800],
+                    padding: const EdgeInsets.all(40),
+                    margin: const EdgeInsets.only(bottom: 40),
+                    child: Text(characters[index]),
+                  );
+                }),
+            ),
+
+
+
+            // Create btn 
             StyledButton(
               onPressed: (){} , 
               child: const Text("create new")
