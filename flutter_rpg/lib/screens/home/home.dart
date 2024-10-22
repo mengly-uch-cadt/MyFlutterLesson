@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rpg/screens/home/character_cart.dart';
 import 'package:flutter_rpg/shared/styled_button.dart';
 import 'package:flutter_rpg/shared/styled_text.dart';
 
@@ -16,7 +17,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Your Characters"),
+        title: const StyledTitle("Your Characters"),
         centerTitle: true,
       ),
       body: Container(
@@ -28,12 +29,7 @@ class _HomeState extends State<Home> {
               child: ListView.builder(
                 itemCount: characters.length,
                 itemBuilder: (_, index){  // a function for builder need 2 parameter but use _ for unused parameter
-                  return Container(
-                    color: Colors.grey[800],
-                    padding: const EdgeInsets.all(40),
-                    margin: const EdgeInsets.only(bottom: 40),
-                    child: Text(characters[index]),
-                  );
+                  return CharacterCart(characters[index]); 
                 }),
             ),
 
@@ -42,7 +38,7 @@ class _HomeState extends State<Home> {
             // Create btn 
             StyledButton(
               onPressed: (){} , 
-              child: const Text("create new")
+              child: const StyledText("create new")
             )
           ],
         ),
