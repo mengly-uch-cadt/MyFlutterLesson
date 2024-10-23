@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rpg/shared/styled_button.dart';
 import 'package:flutter_rpg/shared/styled_text.dart';
 import 'package:flutter_rpg/theme.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,6 +24,18 @@ class _CreateState extends State<Create> {
     _sloganController.dispose();
     super.dispose();
   }
+
+  void handleSubmit(){
+    if(_nameController.text.trim().isEmpty){
+      print("Name must be not empty");
+      return ;
+    }
+    if(_sloganController.text.trim().isEmpty){
+      print("Slogan must be not empty");
+      return ;
+    }
+  
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +51,7 @@ class _CreateState extends State<Create> {
               child: Icon(Icons.code, size: 100, color: AppColors.primaryColor),
             ),
             const Center(
-              child: StyledHeading("Create Character"),
+              child: StyledHeading('Welcome, new player.'),
             ),
             const Center(
               child: StyledText("Create a name & slogan for your character"),
@@ -65,7 +78,15 @@ class _CreateState extends State<Create> {
                 prefixIcon: Icon(Icons.person),// set icon for input 
                 label: StyledText("Create slogan")
               ),
-            )
+            ),
+            const SizedBox(height: 20,),
+
+            Center(
+              child: StyledButton(
+                onPressed: handleSubmit, 
+                child: const StyledHeading("Create Character")
+              ),
+            ),
           ],
         ),
       ),
