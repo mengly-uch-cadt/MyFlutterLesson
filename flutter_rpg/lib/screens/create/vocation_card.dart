@@ -21,6 +21,7 @@ class VocationCard extends StatelessWidget {
 
             Expanded(
               child:Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   StyledHeading(vocation.title),
                   StyledText(vocation.description)

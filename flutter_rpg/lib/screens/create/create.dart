@@ -50,66 +50,71 @@ class _CreateState extends State<Create> {
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-        child: Column(
-          children: [
-            Center(
-              child: Icon(Icons.code, size: 100, color: AppColors.primaryColor),
-            ),
-            const Center(
-              child: StyledHeading('Welcome, new player.'),
-            ),
-            const Center(
-              child: StyledText("Create a name & slogan for your character"),
-            ),
-            const SizedBox(height: 20),
-            
-            // Create form input for name 
-            TextField(
-              controller: _nameController,
-              cursorColor: AppColors.textColor,
-              decoration:const InputDecoration(
-                prefixIcon: Icon(Icons.person),// set icon for input 
-                label: StyledText("Character name")
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Center(
+                child: Icon(Icons.code, size: 100, color: AppColors.primaryColor),
               ),
-              style: GoogleFonts.kanit(
-                textStyle: Theme.of(context).textTheme.bodyMedium
+              const Center(
+                child: StyledHeading('Welcome, new player.'),
               ),
-            ),
-            const SizedBox(height: 20),
-            TextField(
-              controller: _sloganController,
-              cursorColor: AppColors.textColor,
-              decoration:const InputDecoration(
-                prefixIcon: Icon(Icons.person),// set icon for input 
-                label: StyledText("Create slogan")
+              const Center(
+                child: StyledText("Create a name & slogan for your character"),
               ),
-            ),
-            const SizedBox(height: 20),
-        
-            VocationCard(
-              vocation: Vocation.junkie
-            ),
-            const VocationCard(
-              vocation: Vocation.ninja
-            ),
-            const VocationCard(
-              vocation: Vocation.raider
-            ),
-            const VocationCard(
-              vocation: Vocation.wizard
-            ),
-    
-            
-            
+              const SizedBox(height: 20),
+              
+              // Create form input for name 
+              TextField(
+                controller: _nameController,
+                cursorColor: AppColors.textColor,
+                decoration:const InputDecoration(
+                  prefixIcon: Icon(Icons.person),// set icon for input 
+                  label: StyledText("Character name")
+                ),
+                style: GoogleFonts.kanit(
+                  textStyle: Theme.of(context).textTheme.bodyMedium
+                ),
+              ),
+              const SizedBox(height: 20),
+              TextField(
+                controller: _sloganController,
+                cursorColor: AppColors.textColor,
+                decoration:const InputDecoration(
+                  prefixIcon: Icon(Icons.person),// set icon for input 
+                  label: StyledText("Create slogan")
+                ),
+              ),
+              const SizedBox(height: 20),
+          
+              const VocationCard(
+                vocation: Vocation.junkie
+              ),
+              const VocationCard(
+                vocation: Vocation.ninja
+              ),
+              const VocationCard(
+                vocation: Vocation.raider
+              ),
+              const VocationCard(
+                vocation: Vocation.wizard
+              ),
+      
+              
+              
 
-            Center(
-              child: StyledButton(
-                onPressed: handleSubmit, 
-                child: const StyledHeading("Create Character")
+              Center(
+                child: StyledButton(
+                  onPressed: handleSubmit, 
+                  child: const StyledHeading("Create Character")
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
+
+
         ),
+        
       ),
     );
   }
