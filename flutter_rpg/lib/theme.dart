@@ -51,4 +51,13 @@ ThemeData primaryTheme = ThemeData(
     ),
   ),
 
+  // input decoration theme
+  inputDecorationTheme: InputDecorationTheme(
+    filled: true, // fill the input with the ligth color
+    fillColor: AppColors.secondaryColor.withOpacity(0.5),
+    border: InputBorder.none,
+    labelStyle: TextStyle(color: AppColors.textColor),
+    prefixIconColor: AppColors.textColor, // remove the tint color on icon
+  )
+
 );
