@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rpg/models/vocation.dart';
+import 'package:flutter_rpg/screens/create/vocation_card.dart';
 import 'package:flutter_rpg/shared/styled_button.dart';
 import 'package:flutter_rpg/shared/styled_text.dart';
 import 'package:flutter_rpg/theme.dart';
@@ -34,6 +36,9 @@ class _CreateState extends State<Create> {
       print("Slogan must be not empty");
       return ;
     }
+
+    print(_nameController.text);
+    print(_sloganController.text);
   
   }
   @override
@@ -79,7 +84,23 @@ class _CreateState extends State<Create> {
                 label: StyledText("Create slogan")
               ),
             ),
-            const SizedBox(height: 20,),
+            const SizedBox(height: 20),
+        
+            VocationCard(
+              vocation: Vocation.junkie
+            ),
+            const VocationCard(
+              vocation: Vocation.ninja
+            ),
+            const VocationCard(
+              vocation: Vocation.raider
+            ),
+            const VocationCard(
+              vocation: Vocation.wizard
+            ),
+    
+            
+            
 
             Center(
               child: StyledButton(
