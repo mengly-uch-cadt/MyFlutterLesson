@@ -58,6 +58,11 @@ ThemeData primaryTheme = ThemeData(
     border: InputBorder.none,
     labelStyle: TextStyle(color: AppColors.textColor),
     prefixIconColor: AppColors.textColor, // remove the tint color on icon
-  )
+  ),
 
+  // Dialog Theme Color 
+  dialogTheme: DialogTheme(
+    backgroundColor: AppColors.secondaryAccent, 
+    surfaceTintColor: AppColors.secondaryAccent
+  )
 );

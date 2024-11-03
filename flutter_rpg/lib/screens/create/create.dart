@@ -43,11 +43,35 @@ class _CreateState extends State<Create> {
 
   void handleSubmit(){
     if(_nameController.text.trim().isEmpty){
-          print('Name is required');
+      showDialog(context: context, builder: (ctx) {
+        return AlertDialog(
+        title: const StyledHeading("Name is required"),
+        content: const StyledText("Please enter a name for your character"),
+        actions: [
+          StyledButton(
+            onPressed: () => Navigator.pop(ctx), 
+            child: const StyledText("Close"),
+          )
+        ],
+        actionsAlignment: MainAxisAlignment.center,
+      );
+      });
       return ;
     }
     if(_sloganController.text.trim().isEmpty){
-          print('Slogan is required');
+      showDialog(context: context, builder: (ctx) {
+        return AlertDialog(
+        title: const StyledHeading("Slogan is required"),
+        content: const StyledText("Please enter a slogan for your character"),
+        actions: [
+          StyledButton(
+            onPressed: () => Navigator.pop(ctx), 
+            child: const StyledText("Close"),
+          )
+        ],
+        actionsAlignment: MainAxisAlignment.center,
+      );
+      });
       return ;
     }
 
