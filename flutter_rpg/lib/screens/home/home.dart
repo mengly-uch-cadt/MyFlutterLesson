@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rpg/models/character.dart';
 import 'package:flutter_rpg/screens/create/create.dart';
 import 'package:flutter_rpg/screens/home/character_cart.dart';
+import 'package:flutter_rpg/services/charcter_store.dart';
 import 'package:flutter_rpg/shared/styled_button.dart';
 import 'package:flutter_rpg/shared/styled_text.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -27,11 +28,15 @@ class _HomeState extends State<Home> {
           children: [
             // use expanded for scrollable and make the gap look good 
             Expanded(
-              child: ListView.builder(
-                itemCount: characters.length,
-                itemBuilder: (_, index){  // a function for builder need 2 parameter but use _ for unused parameter
-                  return CharacterCart(characters[index]); 
-                }),
+              child: Consumer<CharacterStore>(
+                builder: (context, value, child) {
+                  return ListView.builder(
+                    itemCount: value.characters.length,
+                    itemBuilder: (_, index){  // a function for builder need 2 parameter but use _ for unused parameter
+                      return CharacterCart(value.characters[index]); 
+                    });
+                }
+              ),
             ),
 
 
@@ -42,7 +47,7 @@ class _HomeState extends State<Home> {
                 Navigator.push(
                   context, 
                   MaterialPageRoute(
-                    builder: (ctx)=>const Create()
+                    builder: (ctx)=>const CreateScreen()
                   ));
               } , 
               child: const StyledText("create new")

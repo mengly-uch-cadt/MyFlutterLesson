@@ -3,23 +3,24 @@ import 'package:flutter_rpg/models/character.dart';
 import 'package:flutter_rpg/models/vocation.dart';
 import 'package:flutter_rpg/screens/create/vocation_card.dart';
 import 'package:flutter_rpg/screens/home/home.dart';
+import 'package:flutter_rpg/services/charcter_store.dart';
 import 'package:flutter_rpg/shared/styled_button.dart';
 import 'package:flutter_rpg/shared/styled_text.dart';
 import 'package:flutter_rpg/theme.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:uuid/uuid.dart';
-
 
 var uuid = const Uuid(); 
 
-class Create extends StatefulWidget {
-  const Create({super.key});
+class CreateScreen extends StatefulWidget {
+  const CreateScreen({super.key});
 
   @override
-  State<Create> createState() => _CreateState();
+  State<CreateScreen> createState() => _CreateScreenState();
 }
 
-class _CreateState extends State<Create> {
+class _CreateScreenState extends State<CreateScreen> {
 
   final _nameController = TextEditingController();
   final _sloganController = TextEditingController();
@@ -74,21 +75,22 @@ class _CreateState extends State<Create> {
       });
       return ;
     }
+    // add character to the list (without provider [global state])
+    // characters.add(Character(
+    //   name: _nameController.text.trim(), 
+    //   slogan: _sloganController.text.trim(), 
+    //   vocation: selectedVocation, 
+    //   id: uuid.v4()
+    // ));  
 
-    characters.add(Character(
-      name: _nameController.text.trim(), 
-      slogan: _sloganController.text.trim(), 
-      vocation: selectedVocation, 
-      id: uuid.v4()
-    ));  
-    // Print the newly added character
-    // print('New Character Added: $characters');
-
-    // Print all characters
-    // print('All Characters:');
-    // for (var character in characters) {
-    //   print(character);
-    // }
+    Provider.of<CharacterStore>(context, listen: false)
+      .addCharacter(
+        Character(
+          name: _nameController.text.trim(), 
+          slogan: _sloganController.text.trim(), 
+          vocation: selectedVocation , 
+          id: uuid.v4(),
+        ));
 
     Navigator.push(context, MaterialPageRoute(builder: (ctx)=>const Home()));
   }
@@ -96,7 +98,7 @@ class _CreateState extends State<Create> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Create Character"),
+        title: const Text("CreateScreen Character"),
         centerTitle: true,
       ),
       body: Container(
@@ -111,11 +113,11 @@ class _CreateState extends State<Create> {
                 child: StyledHeading('Welcome, new player.'),
               ),
               const Center(
-                child: StyledText("Create a name & slogan for your character"),
+                child: StyledText("CreateScreen a name & slogan for your character"),
               ),
               const SizedBox(height: 20),
               
-              // Create form input for name 
+              // CreateScreen form input for name 
               TextField(
                 controller: _nameController,
                 cursorColor: AppColors.textColor,
@@ -133,7 +135,7 @@ class _CreateState extends State<Create> {
                 cursorColor: AppColors.textColor,
                 decoration:const InputDecoration(
                   prefixIcon: Icon(Icons.person),// set icon for input 
-                  label: StyledText("Create slogan")
+                  label: StyledText("CreateScreen slogan")
                 ),
                 style: GoogleFonts.kanit(
                   textStyle: Theme.of(context).textTheme.bodyMedium
@@ -184,15 +186,12 @@ class _CreateState extends State<Create> {
               Center(
                 child: StyledButton(
                   onPressed: handleSubmit, 
-                  child: const StyledHeading("Create Character")
+                  child: const StyledHeading("CreateScreen Character")
                 ),
               ),
             ],
           ),
-
-
         ),
-        
       ),
     );
   }
