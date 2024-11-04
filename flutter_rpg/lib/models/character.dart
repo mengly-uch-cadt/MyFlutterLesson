@@ -2,6 +2,7 @@
 import 'package:flutter_rpg/models/stats.dart';
 import 'package:flutter_rpg/models/vocation.dart';
 import 'package:flutter_rpg/models/skill.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 class Character with Stats{
@@ -31,10 +32,49 @@ class Character with Stats{
     skills.add(skill);
   }
 
-// @override
-//   String toString() {
-//     return 'Character{name: $name, slogan: $slogan, vocation: $vocation, id: $id}';
-//   }
+  // Character to firestore (map)
+  Map<String, dynamic> toMap() {
+    return {
+      'name': name,
+      'slogan': slogan,
+      'isFav': _isFav,
+      'vocation': vocation.toString(),
+      'skills': skills.map((s) => s.id).toList(),
+      'stats': statsAsMap,
+      'points': points,
+    };
+  }
+
+  // character from firestore 
+  factory Character.fromFirestore(
+    DocumentSnapshot<Map<String, dynamic>> snapshot,
+    SnapshotOptions? options,
+  ) {
+
+    // get data from snapshot
+    final data = snapshot.data()!;
+
+    // make character instance
+    Character character = Character(
+      name: data['name'],
+      vocation: Vocation.values.firstWhere((v) => v.toString() == data['vocation']),
+      slogan: data['slogan'],
+      id: snapshot.id
+    );
+
+    // update skills
+    for (String id in data['skills']) {
+      Skill skill = allSkills.firstWhere((element) => element.id == id);
+      character.updateSkills(skill);
+    }
+
+    // set isFav
+    if(data['isFav'] == true) {
+      character.toggleIsFav();
+    }
+
+    return character;
+  } 
 
 }
 
